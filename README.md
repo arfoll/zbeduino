@@ -32,6 +32,7 @@ I'm using arduino-cli pretty much exclusively, but obviously you can use the IDE
 arduino-cli config init --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
 arduino-cli core update-index
 arduino-cli core install esp8266:esp8266
+arduino-cli lib install EspMQTTClient
 ```
 
 Then we need to allow unsafe configs since we will use the spakrfun CAN lib so
@@ -39,8 +40,9 @@ use the newly created arduino-cli.yaml in ~/.arduino-15/arduino-cli.yaml and
 set enable_unsafe_install to true. Explanation here:
 https://arduino.github.io/arduino-cli/0.19/configuration/#configuration-keys
 
-Now we install the 3rd party lib, I don't really understand why you need this one but :D
+Now we install the 3rd party lib for CAN handling
 ```
+arduino-cli config set library.enable_unsafe_install true
 arduino-cli lib install --git-url https://github.com/coryjfowler/MCP_CAN_lib.git
 ```
 
